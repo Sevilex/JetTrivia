@@ -11,14 +11,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import javax.inject.Inject
-
 @HiltViewModel
-class QuestionViewModel @Inject constructor(private val repository: QuestionRepository) :
-    ViewModel() {
-    private val data: MutableState<DataOrException<ArrayList<QuestionItem>,
+class QuestionsViewModel @Inject constructor( private val repository: QuestionRepository)
+    : ViewModel() {
+    val data: MutableState<DataOrException<ArrayList<QuestionItem>,
             Boolean, Exception>> = mutableStateOf(
-        DataOrException(null, true, Exception(""))
-    )
+        DataOrException(null, true, Exception("")) )
 
     init {
         getAllQuestions()
